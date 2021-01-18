@@ -7,13 +7,29 @@ class DogContainer extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            breeds: [],
+            hasErrors: false,
+            numberOfDogs: 0
+          }
     }
 
+    componentDidMount() {
+        const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+        fetch(breedUrl)
+          .then(res => res.json())
+          .then(data => this.setState({ breeds: data.message }))
+          .catch(() => this.setState({ hasErrors: true }));
+    }
+    
     render() {
+        const { numberOfDogs, breeds } = this.state;
         return (
             <div>
-                <h2>Hi, I am a Dog Conatainer!</h2>
-                <DogSearch/>
+                <DogSearch
+                    numberOfDogs={numberOfDogs}
+                    breeds={breeds}
+                />
                 <DogList/>
             </div>
           
