@@ -1,4 +1,16 @@
 .container {
+    text-align: center;
+    color: #fff;
+    background: #18bc9c;
+
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    height: 88%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+
     padding-top: 150px;
     padding-bottom: 50px;
 }
@@ -9,9 +21,4 @@
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 2em;
     font-weight: 700;
-}
-
-.skills {
-    font-size: 1.25em;
-    font-weight: 300;
 }

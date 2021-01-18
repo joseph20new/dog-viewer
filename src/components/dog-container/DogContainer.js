@@ -53,7 +53,7 @@ class DogContainer extends React.Component {
     render() {
         const { numberOfDogs, breeds, dogList } = this.state;
         return (
-            <div className="header">
+            <div>
                 <DogSearch
                     numberOfDogs={numberOfDogs}
                     breeds={breeds}
