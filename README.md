@@ -7,8 +7,11 @@ Below is the design for the dog-viewer web application. React framework has been
 
    ### No functions, state, props, inside
 
-### `2. Dog Search Component-`
-   This is the first level stateful component will be serve as the container for other component as well. This component will contain feature to enter the number to view dogs and select the breed of dog from dropdown. This will take all required user operations.
+### `2. Dog Container Component-`
+   This is the first level stateful component will be serve as the container for other component. It will contain all intial logic and will import other child components to complete its functionality.
+   
+### `3. Dog Search Component-`
+   This is the stateful component will be serve to have seach functionality. This component will contain feature to enter the number to view dogs and select the breed of dog from dropdown. This will take all required user operations.
 
-### `3. Dog List Component-`
+### `4. Dog List Component-`
    This component is child Stateless Component. This will list all the results obtained from DoG CEO api on the basis of selection made by user.
