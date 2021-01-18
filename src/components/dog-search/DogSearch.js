@@ -30,6 +30,22 @@ class DogSearch extends React.Component {
 
     capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
+    handleSelect = event => {
+        if (this.state.numberOfDogs === 0) {
+            alert("Please enter number of dogs first.")
+        }
+        this.setState({ breedName: this.state.numberOfDogs === 0 ? "" : event.target.value });
+    }
+
+    handleChange = event => {
+        const value = event.target.value ? parseInt(event.target.value) : 0;
+        this.setState({
+            numberOfDogs: value,
+            breedName: (value === 0 ? "" : this.state.breedName)
+        });
+    }
+
+
     render() {
         const { breeds } = this.state;
 
@@ -49,6 +65,7 @@ class DogSearch extends React.Component {
                                 placeholder="Enter the number of dogs you like to see"
                                 value={this.state.numberOfDogs}
                                 pattern="[0-9]*"
+                                onInput={(evt) => this.handleChange(evt)}
                             />
                         </div>
                         <div className="form-group col-lg-6 text-center ">
@@ -58,6 +75,7 @@ class DogSearch extends React.Component {
                             <select
                                 className="form-control"
                                 value={this.state.breedName}
+                                onChange={this.handleSelect}
                             >
                                 <option value="">Select</option>
                                 {
