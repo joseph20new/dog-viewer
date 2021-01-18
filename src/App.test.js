@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { shallow } from 'enzyme';
 import App from './App';
+import DogContainer from './components/dog-container/DogContainer';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/I am a Dog Conatainer/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  let wrapper;
+  beforeEach(() => wrapper = shallow(<App />));
+
+ it('should render the DogContainer Component', () => {
+    expect(wrapper.containsMatchingElement(<DogContainer/>)).toEqual(true);
+  });
+
+  it('should render correctly', () => {
+    expect(wrapper).toMatchSnapshot()
+  });
 });

@@ -7,7 +7,8 @@ class DogSearch extends React.Component {
         super(props);
         this.state = {
             breeds: [],
-            numberOfDogs: 0
+            numberOfDogs: 0,
+            breedName: ""
         }
     }
 
@@ -18,7 +19,7 @@ class DogSearch extends React.Component {
             listOfBreeds.map((breedName, key) => {
                 return breeds.push({ key, breedName });
             });
-            
+
             return {
                 breeds,
                 numberOfDogs: props.numberOfDogs
@@ -28,7 +29,46 @@ class DogSearch extends React.Component {
     }
 
     render() {
-        return <h3>Hi, I am a DogSearch!</h3>;
+        const { breeds } = this.state;
+
+        return (
+            <div className="container">
+                <div className="row col-lg-12">
+                    <span className="heading-name">Random Dog Viewer Challenge </span>
+                    <hr className="star-light" />
+                    <div className="row">
+                        <div className="form-group col-lg-6 text-center">
+                            <label className="text-left">
+                                <h4>Enter the number of dogs you like to see</h4>
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter the number of dogs you like to see"
+                                value={this.state.numberOfDogs}
+                                pattern="[0-9]*"
+                            />
+                        </div>
+                        <div className="form-group col-lg-6 text-center ">
+                            <label className="text-left">
+                                <h4>Select Dog Breed Type</h4>
+                            </label>
+                            <select
+                                className="form-control"
+                                value={this.state.breedName}
+                            >
+                                <option value="">Select</option>
+                                {
+                                    breeds.map((item) => {
+                                        return <option value={item.breedName} key={item.key}>{item.breedName} </option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 

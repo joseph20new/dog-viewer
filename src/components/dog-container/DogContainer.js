@@ -5,8 +5,8 @@ import DogList from '../dog-list/DogList';
 
 class DogContainer extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             breeds: [],
             hasErrors: false,
@@ -25,7 +25,7 @@ class DogContainer extends React.Component {
     render() {
         const { numberOfDogs, breeds } = this.state;
         return (
-            <div>
+            <div className="header">
                 <DogSearch
                     numberOfDogs={numberOfDogs}
                     breeds={breeds}
