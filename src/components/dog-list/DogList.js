@@ -1,14 +1,14 @@
 import './DogList.css';
 import defaultPlaceholder from '../../dogloader.gif';
 
-const extractBreedName = (data) => {
+const extractBreedName = data => {
     let match = data.split('/');
     if (match)
         return capitalize(data);
 };
 
 const capitalize = breedName => {
-    return breedName.replace('s', ' ')
+    return breedName.replace(/\-/g, ' ')
         .split(" ")
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
@@ -25,7 +25,7 @@ const DogList = props => {
                         ? (
                             <a href="#0">
                                 <img alt="dfd" className="img-thumbnail img-responsive" src={dogList[i]} />
-                                <div className="box_data">
+                                <div className="box-data">
                                     <span>{extractBreedName(dogList[i])}</span>
                                 </div>
                             </a>
