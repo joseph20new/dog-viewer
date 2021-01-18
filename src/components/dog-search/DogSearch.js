@@ -13,7 +13,7 @@ class DogSearch extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.breeds && state.breeds.length === 0) {
+        if (props.breeds) {
             const listOfBreeds = Object.keys(props.breeds);
             let breeds = [];
             listOfBreeds.map((breedName, key) => {
@@ -30,20 +30,17 @@ class DogSearch extends React.Component {
 
     capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
-    handleSelect = event => {
+    setSelectedBreed = event => {
         if (this.state.numberOfDogs === 0) {
             alert("Please enter number of dogs first.")
         }
-        this.setState({ breedName: this.state.numberOfDogs === 0 ? "" : event.target.value });
+        this.setState({ breedName: event.target.value });
         this.props.setSelectedBreed(event.target.value)
     }
 
-    handleChange = event => {
+    setSelectedDogs = event => {
         const value = event.target.value ? parseInt(event.target.value) : 0;
-        this.setState({
-            numberOfDogs: value,
-            breedName: (value === 0 ? "" : this.state.breedName)
-        });
+        this.setState({ numberOfDogs: value });
         this.props.setSelectedDogs(value);
     }
 
@@ -67,17 +64,17 @@ class DogSearch extends React.Component {
                                 placeholder="Enter the number of dogs you like to see"
                                 value={this.state.numberOfDogs}
                                 pattern="[0-9]*"
-                                onInput={(evt) => this.handleChange(evt)}
+                                onInput={(evt) => this.setSelectedDogs(evt)}
                             />
                         </div>
-                        <div className="form-group col-lg-6 text-center ">
+                        <div className="form-group col-lg-6 text-center">
                             <label className="text-left">
                                 <h4>Select Dog Breed Type</h4>
                             </label>
                             <select
                                 className="form-control"
                                 value={this.state.breedName}
-                                onChange={this.handleSelect}
+                                onChange={this.setSelectedBreed}
                             >
                                 <option value="">Select</option>
                                 {

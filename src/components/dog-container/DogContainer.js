@@ -11,7 +11,8 @@ class DogContainer extends React.Component {
             breeds: [],
             dogList: [],
             hasErrors: false,
-            numberOfDogs: 0
+            numberOfDogs: 0,
+            breedName: null
           }
     }
 
@@ -36,19 +37,9 @@ class DogContainer extends React.Component {
           .catch(() => this.setState({ hasErrors: true }))
     };
 
-    setSelectedBreed = breedName => {
-        this.setState({
-          breedName,
-          dogList: []
-        }, () => this.fetchSelectedDogs());
-    };
+    setSelectedBreed = breedName => this.setState({ breedName }, () => this.fetchSelectedDogs());
     
-    setSelectedDogs = numberOfDogs => {
-        this.setState({
-          numberOfDogs,
-          dogList: []
-        }, () => this.fetchSelectedDogs());
-    };
+    setSelectedDogs = numberOfDogs => this.setState({ numberOfDogs }, () => this.fetchSelectedDogs());
     
     render() {
         const { numberOfDogs, breeds, dogList } = this.state;
@@ -61,7 +52,7 @@ class DogContainer extends React.Component {
                     setSelectedBreed={this.setSelectedBreed}
                 />
                 {
-                    numberOfDogs > 0
+                    dogList.length > 0
                         ? (
                         <DogList
                             dogList={dogList}

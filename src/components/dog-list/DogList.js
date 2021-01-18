@@ -23,8 +23,8 @@ const DogList = props => {
                 {
                     dogList[i]
                         ? (
-                            <a href="#0">
-                                <img alt="dfd" className="img-thumbnail img-responsive" src={dogList[i]} />
+                            <a href={dogList[i]} target="_blank">
+                                <img alt={extractBreedName(dogList[i])} className="img-thumbnail img-responsive" src={dogList[i]} />
                                 <div className="box-data">
                                     <span>{extractBreedName(dogList[i])}</span>
                                 </div>
@@ -32,7 +32,7 @@ const DogList = props => {
                         )
                         : (
                             <a href="#0">
-                                <img alt="fgdg" className="img-thumbnail img-responsive" src={defaultPlaceholder} />
+                                <img alt="No Image" className="img-thumbnail img-responsive" src={defaultPlaceholder} />
                             </a>
                         )
                 }
