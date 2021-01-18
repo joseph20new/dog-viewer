@@ -9,18 +9,21 @@ class DogContainer extends React.Component {
         super(props);
         this.state = {
             breeds: [],
+            dogList: [],
             hasErrors: false,
             numberOfDogs: 0
           }
     }
 
-    componentDidMount() {
+    componentDidMount = ()  => this.fetchAllBreeds();
+
+    fetchAllBreeds = () => {
         const breedUrl = 'https://dog.ceo/api/breeds/list/all'
         fetch(breedUrl)
           .then(res => res.json())
           .then(data => this.setState({ breeds: data.message }))
           .catch(() => this.setState({ hasErrors: true }));
-    }
+    };
 
     fetchSelectedDogs = () => {
         const { breedName, numberOfDogs } = this.state;
@@ -31,7 +34,7 @@ class DogContainer extends React.Component {
           .then(res => res.json())
           .then(res => this.setState({ dogList: res.message }))
           .catch(() => this.setState({ hasErrors: true }))
-    }
+    };
 
     setSelectedBreed = breedName => {
         this.setState({
@@ -48,7 +51,7 @@ class DogContainer extends React.Component {
     };
     
     render() {
-        const { numberOfDogs, breeds } = this.state;
+        const { numberOfDogs, breeds, dogList } = this.state;
         return (
             <div className="header">
                 <DogSearch
@@ -57,7 +60,14 @@ class DogContainer extends React.Component {
                     setSelectedDogs={this.setSelectedDogs}
                     setSelectedBreed={this.setSelectedBreed}
                 />
-                <DogList/>
+                {
+                    numberOfDogs > 0
+                        ? (
+                        <DogList
+                            dogList={dogList}
+                        />
+                        ) : null
+                }
             </div>
           
         )
