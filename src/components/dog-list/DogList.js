@@ -4,7 +4,7 @@ import defaultPlaceholder from '../../dogloader.gif';
 const extractBreedName = data => {
     let match = data.split('/');
     if (match)
-        return capitalize(data);
+        return capitalize(match[4]);
 };
 
 const capitalize = breedName => {
