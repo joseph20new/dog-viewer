@@ -28,6 +28,8 @@ class DogSearch extends React.Component {
         return null;
     }
 
+    capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
     render() {
         const { breeds } = this.state;
 
@@ -60,7 +62,7 @@ class DogSearch extends React.Component {
                                 <option value="">Select</option>
                                 {
                                     breeds.map((item) => {
-                                        return <option value={item.breedName} key={item.key}>{item.breedName} </option>
+                                        return <option value={item.breedName} key={item.key}>{this.capitalize(item.breedName)}</option>
                                     })
                                 }
                             </select>

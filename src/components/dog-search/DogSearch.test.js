@@ -18,4 +18,8 @@ describe('DogSearch', () => {
     expect(wrapper.instance().state.numberOfDogs).toEqual(0);
     expect(wrapper.instance().state.breedName).toEqual("");
   });
+
+  it('should capitalize breed names', () =>{
+    expect(wrapper.instance().capitalize('african')).toEqual('African');
+  });
 });
