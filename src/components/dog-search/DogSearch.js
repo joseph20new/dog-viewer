@@ -34,7 +34,7 @@ class DogSearch extends React.Component {
         if (this.state.numberOfDogs === 0) {
             alert("Please enter number of dogs first.")
         }
-        this.setState({ breedName: this.state.numberOfDogs == 0 ? "" : event.target.value })
+        this.setState({ breedName: this.state.numberOfDogs === 0 ? "" : event.target.value })
         this.props.setSelectedBreed(event.target.value)
     }
 
