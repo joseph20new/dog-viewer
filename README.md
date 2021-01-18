@@ -36,7 +36,7 @@ Below is the design for the dog-viewer web application. React framework has been
 -------------------------------------------------------------------------------------------------------
 
 Timeline-
-Setup & configuration - 1/2 - 1 hour
-Coding - 3 hours
-Testing - tested together with Dev, But final testing took 30 min with fixing smalls bugs
-UI Design - 1 hour
+1. Setup & configuration - 1/2 - 1 hour
+2. Coding - 3 hours
+3. Testing - tested together with Dev, But final testing took 30 min with fixing smalls bugs
+4. UI Design - 1 hour
