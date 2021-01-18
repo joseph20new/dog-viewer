@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
+import DogContainer from './components/dog-container/DogContainer';
 
 function App() {
   return (
-    <div className="App">
-      Hello Dog Viewer
-    </div>
+    <DogContainer/>
   );
 }
 
